@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6e6;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        .cake {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .cake img {
+            width: 300px;
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            background-color: #ff4d4d;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #e60000;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        footer {
+            margin-top: 30px;
+            font-size: 0.9em;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Happy Birthday, My Love!</h1>
+    </header>
+
+    <h2>Wishing you all the happiness in the world on your special day!</h2>
+
+    <div class="cake">
+        <img id="cakeImage" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/Birthday_cake_icon.png/600px-Birthday_cake_icon.png" alt="Birthday Cake">
+    </div>
+
+    <button class="button" onclick="cutCake()">Cut the Cake 🎂</button>
+
+    <script>
+        function cutCake() {
+            const cakeImage = document.getElementById('cakeImage');
+            cakeImage.src = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/Birthday_cake_cut_icon.png/600px-Birthday_cake_cut_icon.png";
+            alert('Cake has been cut! 🎉 Enjoy the celebration!');
+        }
+    </script>
+
+    <footer>
+        <p>Made with ❤️ just for you!</p>
+    </footer>
+</body>
+</html>
