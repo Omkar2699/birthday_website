@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Yukti</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+
+        .page {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: #fff;
+            text-align: center;
+            font-size: 2em;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .hearts {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #ffcccc;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            clip-path: polygon(50% 0%, 100% 40%, 80% 100%, 50% 80%, 20% 100%, 0% 40%);
+            animation: float 5s infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(calc(50vw - 50%));
+                opacity: 0;
+            }
+        }
+
+        button {
+            padding: 15px 30px;
+            font-size: 1em;
+            background-color: #ff4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e60000;
+        }
+
+        #decorations {
+            color: #ff69b4;
+            font-size: 3em;
+            display: none;
+        }
+
+        #balloons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .balloon {
+            position: absolute;
+            width: 40px;
+            height: 60px;
+            background-color: rgba(255, 0, 0, 0.8);
+            border-radius: 50%;
+            animation: fly 4s infinite;
+        }
+
+        @keyframes fly {
+            0% {
+                transform: translateY(100%);
+            }
+            100% {
+                transform: translateY(-20%);
+            }
+        }
+
+        #cake {
+            display: none;
+            width: 300px;
+            height: 300px;
+            background-color: white;
+            border-radius: 50%;
+            position: relative;
+            text-align: center;
+            line-height: 300px;
+            font-size: 1.5em;
+            color: black;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="page1" class="page">
+        <div class="hearts"></div>
+        <p>It's a special day for you, yayayyyy! ❤️</p>
+    </div>
+
+    <div id="page2" class="page hidden">
+        <p>I am going to make this day special for you because you are special for me.</p>
+    </div>
+
+    <div id="page3" class="page hidden">
+        <p>Mai tumhare saath nahi toh kya tumhare dil me hu Yuku ❤️</p>
+    </div>
+
+    <div id="page4" class="page hidden">
+        <p>Do you want to see what I made for you?</p>
+        <button id="yesButton">Yes!</button>
+        <button id="noButton">No</button>
+    </div>
+
+    <div id="page5" class="page hidden">
+        <p>Have a look at it, Madam jii ❤️</p>
+        <button id="lightsButton">Lights On</button>
+    </div>
+
+    <div id="page6" class="page hidden" style="background-color: #ffe6f2;">
+        <button id="musicButton">Play Music</button>
+    </div>
+
+    <div id="page7" class="page hidden">
+        <p id="decorations">Happy Birthday Yukti! 🎉❤️🎈</p>
+        <button id="balloonButton">Fly the Balloons</button>
+    </div>
+
+    <div id="page8" class="page hidden">
+        <div id="balloons"></div>
+        <button id="cakeButton">Let's cut the cake, Madamjii</button>
+    </div>
+
+    <div id="page9" class="page hidden">
+        <div id="cake">Happy Birthday Yukti ❤️🎂</div>
+    </div>
+
+    <script>
+        const pages = document.querySelectorAll('.page');
+        const heartsContainer = document.querySelector('.hearts');
+
+        // Create flying hearts
+        for (let i = 0; i < 30; i++) {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            heartsContainer.appendChild(heart);
+        }
+
+        // Page transitions
+        let currentPage = 0;
+        const nextPage = () => {
+            pages[currentPage].classList.add('hidden');
+            currentPage++;
+            pages[currentPage].classList.remove('hidden');
+        };
+
+        setTimeout(nextPage, 3000); // Page 2
+        setTimeout(nextPage, 6000); // Page 3
+        setTimeout(nextPage, 9000); // Page 4
+
+        // Yes/No Buttons
+        document.getElementById('yesButton').addEventListener('click', nextPage);
+
+        // Lights On
+        document.getElementById('lightsButton').addEventListener('click', () => {
+            document.getElementById('page6').style.backgroundColor = '#ffe6f2';
+            nextPage();
+        });
+
+        // Play Music
+        document.getElementById('musicButton').addEventListener('click', () => {
+            const audio = new Audio('https://pagalsong.in/uploads/systemuploads/mp3/Ok%20Jaanu/Enna%20Sona%20-%20Ok%20Jaanu%20128%20Kbps.mp3');
+            audio.play();
+            nextPage();
+        });
+
+        // Show Decorations
+        document.getElementById('balloonButton').addEventListener('click', () => {
+            document.getElementById('decorations').style.display = 'block';
+            nextPage();
+        });
+
+        // Fly Balloons
+        document.getElementById('balloonButton').addEventListener('click', () => {
+            const balloonsContainer = document.getElementById('balloons');
+            for (let i = 0; i < 20; i++) {
+                const balloon = document.createElement('div');
+                balloon.className = 'balloon';
+                balloon.style.left = Math.random() * 100 + 'vw';
+                balloon.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 75%)`;
+                balloon.style.animationDelay = Math.random() * 2 + 's';
+                balloonsContainer.appendChild(balloon);
+            }
+            nextPage();
+        });
+
+        // Cut the Cake
+        document.getElementById('cakeButton').addEventListener('click', () => {
+            document.getElementById('cake').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
